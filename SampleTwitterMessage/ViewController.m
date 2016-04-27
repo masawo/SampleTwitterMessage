@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MessageViewController.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
@@ -108,7 +109,9 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    MessageViewController *controller = [MessageViewController messageViewController];
+    controller.userData = self.followers[(NSUInteger) indexPath.row];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 

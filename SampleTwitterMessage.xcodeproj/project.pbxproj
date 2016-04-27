@@ -17,6 +17,8 @@
 		39BA42691CD0A0BB008DC01A /* SampleTwitterMessageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BA42681CD0A0BB008DC01A /* SampleTwitterMessageUITests.m */; };
 		39BA42791CD0A366008DC01A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39BA42781CD0A366008DC01A /* Social.framework */; };
 		39BA427B1CD0AB06008DC01A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39BA427A1CD0AB06008DC01A /* Accounts.framework */; };
+		39BA427E1CD0C451008DC01A /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BA427D1CD0C451008DC01A /* MessageViewController.m */; };
+		39BA42801CD0C462008DC01A /* MessageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BA427F1CD0C462008DC01A /* MessageViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		39BA426A1CD0A0BB008DC01A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39BA42781CD0A366008DC01A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		39BA427A1CD0AB06008DC01A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		39BA427C1CD0C451008DC01A /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		39BA427D1CD0C451008DC01A /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		39BA427F1CD0C462008DC01A /* MessageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MessageViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +118,9 @@
 				39BA42471CD0A0BB008DC01A /* AppDelegate.m */,
 				39BA42491CD0A0BB008DC01A /* ViewController.h */,
 				39BA424A1CD0A0BB008DC01A /* ViewController.m */,
+				39BA427C1CD0C451008DC01A /* MessageViewController.h */,
+				39BA427D1CD0C451008DC01A /* MessageViewController.m */,
+				39BA427F1CD0C462008DC01A /* MessageViewController.storyboard */,
 				39BA424C1CD0A0BB008DC01A /* Main.storyboard */,
 				39BA424F1CD0A0BB008DC01A /* Assets.xcassets */,
 				39BA42511CD0A0BB008DC01A /* LaunchScreen.storyboard */,
@@ -253,6 +261,7 @@
 			files = (
 				39BA42531CD0A0BB008DC01A /* LaunchScreen.storyboard in Resources */,
 				39BA42501CD0A0BB008DC01A /* Assets.xcassets in Resources */,
+				39BA42801CD0C462008DC01A /* MessageViewController.storyboard in Resources */,
 				39BA424E1CD0A0BB008DC01A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +289,7 @@
 			files = (
 				39BA424B1CD0A0BB008DC01A /* ViewController.m in Sources */,
 				39BA42481CD0A0BB008DC01A /* AppDelegate.m in Sources */,
+				39BA427E1CD0C451008DC01A /* MessageViewController.m in Sources */,
 				39BA42451CD0A0BB008DC01A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
