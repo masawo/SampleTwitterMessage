@@ -10,6 +10,7 @@
 
 @interface MessageViewController : UIViewController
 
+@property (nonatomic) NSString *myScreenName;
 @property (nonatomic) NSDictionary *userData;
 
 + (instancetype)messageViewController;

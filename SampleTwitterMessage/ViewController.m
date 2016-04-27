@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) ACAccountStore *accountStore;
+@property (nonatomic) ACAccount *twitterAccount;
 @property (nonatomic) NSMutableArray *followers;
 @property (nonatomic) NSString *cellIdentifier;
 
@@ -49,6 +50,7 @@
                                                         // TODO 複数アカウントがある場合に選ばせる
                                                         ACAccount *account = [accounts lastObject];
                                                         NSLog(@"account = %@", account);
+                                                        self.twitterAccount = account;
                                                         [self getTwitterFollowers:account];
                                                     }
                                                 } else {
@@ -111,6 +113,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MessageViewController *controller = [MessageViewController messageViewController];
     controller.userData = self.followers[(NSUInteger) indexPath.row];
+    controller.myScreenName = self.twitterAccount.username;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
