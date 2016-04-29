@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (strong, nonatomic) IBOutlet UIView *inputAccessoryView;
+@property (strong, nonatomic) IBOutlet UIView *inputBar;
 
 @property (nonatomic) NSMutableArray *messages;
 @property (nonatomic) NSString *cellIdentifier;
@@ -62,7 +62,7 @@
 
 - (UIView *)inputAccessoryView {
     if (_showInputView) {
-        return _inputAccessoryView;
+        return _inputBar;
     }
     return nil;
 }
@@ -166,6 +166,8 @@
     [self.messages addObject:message];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.messages.count - 1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     });
 }
 

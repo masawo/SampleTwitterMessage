@@ -42,7 +42,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="inputAccessoryView" destination="r4X-L1-s8n" id="I3E-E2-IEI"/>
+                        <outlet property="inputBar" destination="r4X-L1-s8n" id="IeX-Yb-1l0"/>
                         <outlet property="tableView" destination="M96-I3-Hca" id="San-av-4dV"/>
                         <outlet property="textField" destination="wGa-pf-Sha" id="VOE-5b-S7m"/>
                     </connections>
