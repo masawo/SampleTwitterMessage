@@ -20,6 +20,7 @@
 		39BA427E1CD0C451008DC01A /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39BA427D1CD0C451008DC01A /* MessageViewController.m */; };
 		39BA42801CD0C462008DC01A /* MessageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39BA427F1CD0C462008DC01A /* MessageViewController.storyboard */; };
 		BF8CE009D8EC814A11BD757F /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CE9094441310C62F57FA7 /* Message.m */; };
+		BF8CE6F0281C3A47EC85A765 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BF8CEDBEF016DD0B33CCE8EB /* MessageCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +62,10 @@
 		39BA427C1CD0C451008DC01A /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		39BA427D1CD0C451008DC01A /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		39BA427F1CD0C462008DC01A /* MessageViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MessageViewController.storyboard; sourceTree = "<group>"; };
+		BF8CE62F40FFBF6EAD70DF06 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		BF8CE9094441310C62F57FA7 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		BF8CED55E378EDADBF53FFA9 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		BF8CEDBEF016DD0B33CCE8EB /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				39BA42431CD0A0BB008DC01A /* Supporting Files */,
 				BF8CE9094441310C62F57FA7 /* Message.m */,
 				BF8CED55E378EDADBF53FFA9 /* Message.h */,
+				BF8CEDBEF016DD0B33CCE8EB /* MessageCell.m */,
+				BF8CE62F40FFBF6EAD70DF06 /* MessageCell.h */,
 			);
 			path = SampleTwitterMessage;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				39BA427E1CD0C451008DC01A /* MessageViewController.m in Sources */,
 				39BA42451CD0A0BB008DC01A /* main.m in Sources */,
 				BF8CE009D8EC814A11BD757F /* Message.m in Sources */,
+				BF8CE6F0281C3A47EC85A765 /* MessageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

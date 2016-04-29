@@ -8,6 +8,7 @@
 
 #import "MessageViewController.h"
 #import "Message.h"
+#import "MessageCell.h"
 
 
 @interface MessageViewController () <UITableViewDataSource>
@@ -39,7 +40,7 @@
     }
 
     self.cellIdentifier = @"messageCell";
-
+    [self.tableView registerClass:[MessageCell class] forCellReuseIdentifier:self.cellIdentifier];
     self.tableView.dataSource = self;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
 
@@ -76,17 +77,54 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO セルのデザイン
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier forIndexPath:indexPath];
+    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier forIndexPath:indexPath];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.cellIdentifier];
+        cell = [[MessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:self.cellIdentifier];
     }
     Message *message = self.messages[(NSUInteger) indexPath.row];
     if (message) {
-        UILabel *label = [cell viewWithTag:1];
-        if (label) {
-            label.text = message.body;
+        CGSize maxSize = CGSizeMake(260.0, CGFLOAT_MAX);
+        NSDictionary *attr = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:17.0]};
+        CGRect rect = [message.body boundingRectWithSize:maxSize
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:attr
+                                                 context:nil];
+        CGFloat height = (CGFloat) MAX(CGRectGetHeight(rect), 30.0);
+        cell.textView.text = message.body;
+        cell.textView.textColor = [UIColor whiteColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell setFrame:CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect))];
+
+        UIImage *bubbleImage;
+        UIImageView *imageView;
+        UIView *backgroundView;
+
+        if (message.isMine) {
+            [cell.textView setFrame:CGRectMake((CGFloat) (280.0 - CGRectGetWidth(rect)), 0, CGRectGetWidth(rect), height)];
+            bubbleImage = [[UIImage imageNamed:@"right_bubble.png"] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
+            imageView = [[UIImageView alloc] initWithFrame:CGRectMake(
+                    (CGFloat) (270.0 - CGRectGetWidth(rect)), 0,
+                    CGRectGetWidth(rect) + 35, height + 10
+            )];
+            backgroundView = [[UIView alloc] initWithFrame:CGRectMake(
+                    0, 0,
+                    CGRectGetWidth(cell.frame), CGRectGetHeight(cell.frame)
+            )];
+        } else {
+            [cell.textView setFrame:CGRectMake(20.0, 0, CGRectGetWidth(rect), height)];
+            bubbleImage = [[UIImage imageNamed:@"left_bubble.png"] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
+            imageView = [[UIImageView alloc] initWithFrame:CGRectMake(
+                    0, 0,
+                    CGRectGetWidth(rect) + 35, height + 10
+            )];
+            backgroundView = [[UIView alloc] initWithFrame:CGRectMake(
+                    0, 0,
+                    CGRectGetWidth(cell.frame), CGRectGetHeight(cell.frame)
+            )];
         }
+        [imageView setImage:bubbleImage];
+        [backgroundView addSubview:imageView];
+        [cell setBackgroundView:backgroundView];
     }
     return cell;
 }
@@ -103,8 +141,13 @@
         Message *message = [Message initWithScreenName:self.myScreenName body:body];
         message.isMine = YES;
         [self post:message];
-        // TODO 1秒後にオウム返し
         self.textField.text = @"";
+
+        Message *echoMessage = [Message initWithScreenName:@"echo" body:[NSString stringWithFormat:@"%@%@", message.body, message.body]];
+        dispatch_time_t waitTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+        dispatch_after(waitTime, dispatch_get_main_queue(), ^(void){
+            [self post:echoMessage];
+        });
     }
 }
 
