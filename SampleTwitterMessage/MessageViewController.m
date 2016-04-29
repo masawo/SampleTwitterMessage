@@ -84,7 +84,9 @@
     }
     Message *message = self.messages[(NSUInteger) indexPath.row];
     if (message) {
-        CGRect rect = [MessageCell rectForCell:message.body width:260.0];
+        CGFloat maxWidth = CGRectGetWidth(self.view.frame);
+
+        CGRect rect = [MessageCell rectForCell:message.body width:(CGFloat) (maxWidth - 60.0)];
         CGFloat height = [MessageCell textViewHeightForCell:message.body width:CGRectGetWidth(rect)];
         cell.textView.text = message.body;
         cell.textView.textColor = [UIColor whiteColor];
@@ -96,10 +98,10 @@
         UIView *backgroundView;
 
         if (message.isMine) {
-            [cell.textView setFrame:CGRectMake((CGFloat) (280.0 - CGRectGetWidth(rect)), 0, CGRectGetWidth(rect), height)];
+            [cell.textView setFrame:CGRectMake((CGFloat) (maxWidth - 40.0 - CGRectGetWidth(rect)), 0, CGRectGetWidth(rect), height)];
             bubbleImage = [[UIImage imageNamed:@"right_bubble.png"] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
             imageView = [[UIImageView alloc] initWithFrame:CGRectMake(
-                    (CGFloat) (270.0 - CGRectGetWidth(rect)), 0,
+                    (CGFloat) (maxWidth - 50.0 - CGRectGetWidth(rect)), 0,
                     CGRectGetWidth(rect) + 35, height + 10
             )];
             backgroundView = [[UIView alloc] initWithFrame:CGRectMake(
