@@ -43,6 +43,10 @@
     [self.accountStore requestAccessToAccountsWithType:accountType
                                                options:nil
                                             completion:^(BOOL granted, NSError *error) {
+                                                if (error) {
+                                                    NSLog(@"error = %@", error);
+                                                    return;
+                                                }
                                                 if (granted) {
                                                     NSLog(@"%s: granted", sel_getName(_cmd));
                                                     NSArray *accounts = [self.accountStore accountsWithAccountType:accountType];
@@ -52,9 +56,11 @@
                                                         NSLog(@"account = %@", account);
                                                         self.twitterAccount = account;
                                                         [self getTwitterFollowers:account];
+                                                    } else {
+                                                        [self showDialog:@"twitterアカウントが見つかりません。設定アプリでtwitterアカウントを設定してください"];
                                                     }
                                                 } else {
-                                                    NSLog(@"%s: NOT granted", sel_getName(_cmd));
+                                                    [self showDialog:@"設定アプリでtwitterへのアクセスを許可してください"];
                                                 }
                                             }];
 }
@@ -84,6 +90,19 @@
             });
         }
     }];
+}
+
+- (void)showDialog:(NSString *)message {
+    UIAlertController *alertController =
+            [UIAlertController alertControllerWithTitle:nil
+                                                message:message
+                                         preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK"
+                                                        style:UIAlertActionStyleDefault
+                                                      handler:nil]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:alertController animated:YES completion:nil];
+    });
 }
 
 #pragma mark - UITableViewDataSource
