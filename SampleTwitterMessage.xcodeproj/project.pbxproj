@@ -528,6 +528,7 @@
 				39BA426F1CD0A0BB008DC01A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39BA42701CD0A0BB008DC01A /* Build configuration list for PBXNativeTarget "SampleTwitterMessageTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +537,7 @@
 				39BA42721CD0A0BB008DC01A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		39BA42731CD0A0BB008DC01A /* Build configuration list for PBXNativeTarget "SampleTwitterMessageUITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +546,7 @@
 				39BA42751CD0A0BB008DC01A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
