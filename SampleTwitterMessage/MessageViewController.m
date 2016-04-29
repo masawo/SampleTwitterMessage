@@ -11,7 +11,7 @@
 #import "MessageCell.h"
 
 
-@interface MessageViewController () <UITableViewDataSource>
+@interface MessageViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -42,6 +42,7 @@
     self.cellIdentifier = @"messageCell";
     [self.tableView registerClass:[MessageCell class] forCellReuseIdentifier:self.cellIdentifier];
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
 
     self.messages = [NSMutableArray array];
@@ -83,13 +84,8 @@
     }
     Message *message = self.messages[(NSUInteger) indexPath.row];
     if (message) {
-        CGSize maxSize = CGSizeMake(260.0, CGFLOAT_MAX);
-        NSDictionary *attr = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:17.0]};
-        CGRect rect = [message.body boundingRectWithSize:maxSize
-                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                              attributes:attr
-                                                 context:nil];
-        CGFloat height = (CGFloat) MAX(CGRectGetHeight(rect), 30.0);
+        CGRect rect = [MessageCell rectForCell:message.body width:260.0];
+        CGFloat height = [MessageCell textViewHeightForCell:message.body width:CGRectGetWidth(rect)];
         cell.textView.text = message.body;
         cell.textView.textColor = [UIColor whiteColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -132,6 +128,18 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Message *message = self.messages[(NSUInteger) indexPath.row];
+    if (message) {
+        CGFloat height = [MessageCell textViewHeightForCell:message.body width:260];
+        return height + 20;
+    }
+    return 44;
+}
+
 
 #pragma mark - 投稿
 

@@ -9,4 +9,7 @@
 
 @property (nonatomic) UITextView *textView;
 
++ (CGRect)rectForCell:(NSString *)string width:(CGFloat)width;
++ (CGFloat)textViewHeightForCell:(NSString *)string width:(CGFloat)width;
+
 @end

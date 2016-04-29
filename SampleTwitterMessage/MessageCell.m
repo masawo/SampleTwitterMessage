@@ -24,4 +24,19 @@
     return self;
 }
 
++ (CGRect)rectForCell:(NSString *)string width:(CGFloat)width {
+    CGSize maxSize = CGSizeMake(width, CGFLOAT_MAX);
+    NSDictionary *attr = @{NSFontAttributeName : [UIFont boldSystemFontOfSize:17.0]};
+    CGRect rect = [string boundingRectWithSize:maxSize
+                                       options:NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:attr
+                                       context:nil];
+    return rect;
+}
+
++ (CGFloat)textViewHeightForCell:(NSString *)string width:(CGFloat)width {
+    CGFloat height = (CGFloat) MAX(CGRectGetHeight([MessageCell rectForCell:string width:width]), 30.0);
+    return height;
+}
+
 @end
