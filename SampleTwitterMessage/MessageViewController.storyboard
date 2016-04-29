@@ -36,10 +36,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="M96-I3-Hca" firstAttribute="leading" secondItem="P5i-D1-M9k" secondAttribute="leading" id="9Ap-iB-qtz"/>
+                            <constraint firstItem="M96-I3-Hca" firstAttribute="bottom" secondItem="P5i-D1-M9k" secondAttribute="bottomMargin" id="ER1-c2-tf5"/>
                             <constraint firstItem="c3H-2E-ai7" firstAttribute="top" secondItem="M96-I3-Hca" secondAttribute="bottom" id="f1Z-kX-Hlj"/>
                             <constraint firstAttribute="trailing" secondItem="M96-I3-Hca" secondAttribute="trailing" id="hIc-uO-1al"/>
                             <constraint firstItem="M96-I3-Hca" firstAttribute="top" secondItem="P5i-D1-M9k" secondAttribute="topMargin" id="rHY-3c-E31"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="f1Z-kX-Hlj"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="inputBar" destination="r4X-L1-s8n" id="IeX-Yb-1l0"/>

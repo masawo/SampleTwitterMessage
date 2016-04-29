@@ -60,6 +60,15 @@
     [self reloadInputViews];
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.bottom = 66;
+    self.tableView.contentInset = insets;
+}
+
+
 - (UIView *)inputAccessoryView {
     if (_showInputView) {
         return _inputBar;
