@@ -89,8 +89,6 @@
         CGRect rect = [MessageCell rectForCell:message.body width:(CGFloat) (maxWidth - 60.0)];
         CGFloat height = [MessageCell textViewHeightForCell:message.body width:CGRectGetWidth(rect)];
         cell.textView.text = message.body;
-        cell.textView.textColor = [UIColor whiteColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setFrame:CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect))];
 
         UIImage *bubbleImage;

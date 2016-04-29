@@ -13,8 +13,10 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         _textView = [[UITextView alloc] initWithFrame:CGRectZero];
         _textView.backgroundColor = [UIColor clearColor];
+        _textView.textColor = [UIColor whiteColor];
         _textView.editable = NO;
         _textView.scrollEnabled = NO;
         [_textView sizeToFit];
