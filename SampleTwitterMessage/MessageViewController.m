@@ -150,6 +150,7 @@
         message.isMine = YES;
         [self post:message];
         self.textField.text = @"";
+        [self.textField resignFirstResponder];
 
         Message *echoMessage = [Message initWithScreenName:@"echo" body:[NSString stringWithFormat:@"%@%@", message.body, message.body]];
         dispatch_time_t waitTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
